@@ -26,13 +26,19 @@ export const GraphDisplay: React.FC<IProps> = ({ containers, network }) => {
     });
 
     const nodes = [{ id: networkName, type: 'network' }, ...containerNodes];
-    // Format link objects according to reac-force-graph API
-    const links = containers.map((container) => {
-      return {
-        source: networkName,
-        target: container.name,
-      };
-    });
+    // Format link objects for limited mesh: each container connects to the next 4 containers in a circular manner
+    const links = [];
+    for (let i = 0; i < containers.length; i++) {
+      for (let j = 1; j <= 4; j++) {
+        const targetIndex = (i + j) % containers.length;
+        if (targetIndex !== i) { // avoid self
+          links.push({
+            source: containers[i].name,
+            target: containers[targetIndex].name,
+          });
+        }
+      }
+    }
 
     return {
       nodes: nodes,

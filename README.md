@@ -95,15 +95,18 @@
 
 >### Requirements
 >1. Latest version of [Docker][docker]
+>2. [Node.js][nodejs] (version 12 or higher) and npm
 >### Installation
 >1. Clone Repo to local device - `git clone https://github.com/oslabs-beta/DockerNet.git`
->1. Navigate to the DockerNet directory in terminal of chioce
+>1. Navigate to the DockerNet directory in terminal of choice
 >1. Install required packages on local device - `npm install`
+>   - *Note:* This may show warnings about deprecated packages and vulnerabilities, but the installation will complete successfully.
 >1. In the root directory rename `.env.example` file to `.env`
 >
 >_*Note:*_ 
 >- Frontend and Server Ports are defaulted to 8081 and 3031, respectively 
 >- These can be updated in the `.env` file found in the root directory
+>- For details on recent updates and fixes, see [CHANGES.md](./CHANGES.md)
 >### How to Use
 >1. On your local device open Docker and ensure you have containers running
 >1. Navigate to the DockerNet directory in terminal of chioce
@@ -123,6 +126,8 @@
 >List view and Graph view
 > <p align="center"><img alt="remove-container-from-network" src="./assets/switch-views.gif"></p>
 ---
+## Recent Changes
+>For a detailed log of recent updates, fixes, and modifications, please refer to [CHANGES.md](./CHANGES.md). This includes Docker API compatibility fixes, graph topology updates, and setup improvements.
 ## Looking Ahead
 >### Roadmap
 > Here's a list of features currently being considered by the development team:

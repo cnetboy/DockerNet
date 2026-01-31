@@ -14,15 +14,14 @@ const networksController = (() => {
     next: NextFunction
   ) => {
     try {
-      // this version of the docker API returns networks and associated containers
-      // Docker's API is backwards compatible with older versions
+      // Get networks and associated containers using Docker CLI
       const { stdout, stderr } = await exec(
-        'curl --unix-socket /var/run/docker.sock http://localhost/v1.18/networks'
+        'docker network inspect $(docker network ls -q)'
       );
 
-      if (!stdout) {
+      if (stderr) {
         return next({
-          log: 'Docker API is responsive but throwing error on command in get Networks and Containers',
+          log: 'Docker CLI is responsive but throwing error in get Networks and Containers',
           message: stderr,
         });
       }
